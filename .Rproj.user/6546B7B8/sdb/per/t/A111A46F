@@ -1,0 +1,17 @@
+{
+    "contents" : "# ui.R\n\nlibrary(shiny)\n\n# run this from command line: runApp(display.mode=\"showcase\")\n\nshinyUI(\n  \n  navbarPage(\"Car vs Car Comparison Tool\",\n    tabPanel(\"Compare\",\n         \n      sidebarPanel(\n          selectInput(\"car1\",\"Choose Car 1\", rownames(mtcars), selected=\"Valiant\"),\n          selectInput(\"car2\",\"Choose Car 2\", rownames(mtcars)),\n          selectInput(\"attr\", \"Attribute\", colnames(mtcars)),\n          submitButton('Submit')\n      ),\n      mainPanel(\n        h3('Comparison'),\n        h4('Car 1'),\n        verbatimTextOutput(\"car1\"),\n        h4('Car 2'),\n        verbatimTextOutput(\"car2\"),\n        h4('Attribute comparison'),\n        verbatimTextOutput(\"attr\"),\n        h4(\"General Comparsion\"),\n        verbatimTextOutput(\"sugg\"),\n        plotOutput(\"plot\")\n      )\n    ),\n    \n    tabPanel(\"About\",\n      mainPanel(\n        h4('A graphical tool for comparing two cars from the Motor Trends Cars Data set.'),\n        h4('Written by Ven Reddy')\n      )\n    )\n  )\n)\n",
+    "created" : 1447877113557.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3619016239",
+    "id" : "A111A46F",
+    "lastKnownWriteTime" : 1448224724,
+    "path" : "~/Coursera/Data Science/Developing Data Products/courseProject/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

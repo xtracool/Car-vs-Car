@@ -1,0 +1,17 @@
+{
+    "contents" : "#server.R\n\ndiabetesRisk <- function(glucose) glucose / 200\n\nhighLow <- function(v1, v2) { if (v1 > v2) return(v1) else return(v2)}\nLowHigh <- function(v1, v2) { if (v1 > v2) return(v2) else return(v1)}\n\n##\nwhichIsBetter <- function(v1, v2, attr) { \n  result <- switch(attr, \"mpg\"=highLow() )\n  \n  return(result)\n} \n\n##\ngetRows <- function(r1,r2) { \n  f <- c(r1,r2)\n  fd <- filter(c, names %in% f )\n  return(fd)\n}\n\n\n\n# get data and add names\ndata(mtcars)\nd <- mtcars\nd$names <- rownames(d)\n\nlibrary(dplyr)\n\n# everything before this gets called only once\nshinyServer(\n  function(input, output) {\n    #output$inputValue <- renderPrint({input$glucose})\n    #output$prediction <- renderPrint({diabetesRisk(input$glucose)})\n    \n    output$car1 <- renderPrint({input$car1})\n    output$car2 <- renderPrint({input$car2})\n    \n    # calc difference between \n    output$attr <- renderPrint({\n      cd <- getRows(input$car1, input$car2)\n      \n      if ( input$attr == \"mpg\") {\n        v <- abs( cd[1,1] - cd[2,1] )\n        return(v)\n      }\n      else if ( input$attr == \"cyl\") {\n        v <- abs( cd[1,2] - cd[2,2] )\n        return(v)\n      }\n      \n      else if ( input$attr == \"disp\") {\n        v <- abs( cd[1,3] - cd[2,3] )\n        return(v)\n      }\n      else if ( input$attr == \"hp\") {\n        v <- abs( cd[1,4] - cd[2,4] )\n        return(v)\n      }\n      else if ( input$attr == \"drat\") {\n        v <- abs( cd[1,5] - cd[2,5] )\n        return(v)\n      }\n      else if ( input$attr == \"wt\") {\n        v <- abs( cd[1,6] - cd[2,6] )\n        return(v)\n      }\n      else if ( input$attr == \"qsec\") {\n        v <- abs( cd[1,7] - cd[2,7] )\n        return(v)\n      }\n      else if ( input$attr == \"vs\") {\n        v <- abs( cd[1,8] - cd[2,8] )\n        return(v)\n      }\n      else if ( input$attr == \"am\") {\n        v <- abs( cd[1,9] - cd[2,9] )\n        return(v)\n      }\n      else if ( input$attr == \"gear\") {\n        v <- abs( cd[1,10] - cd[2,10] )\n        return(v)\n      }\n      else if ( input$attr == \"carb\") {\n        v <- abs( cd[1,11] - cd[2,11] )\n        return(v)\n      }\n      #else return(\"N/A\")\n\n    })    \n\n    # show details values\n    output$sugg <- renderPrint({\n      getRows(input$car1, input$car2)\n    })\n    \n    # show plot for selected cars\n    output$plot <- renderPlot({\n      d <- getRows(input$car1, input$car2)\n      d2 <- select(d, -names)\n      plot(d2)\n    })\n    \n  }\n)",
+    "created" : 1447877138852.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3943049599",
+    "id" : "C01AFA8",
+    "lastKnownWriteTime" : 1448224551,
+    "path" : "~/Coursera/Data Science/Developing Data Products/courseProject/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

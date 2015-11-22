@@ -1,0 +1,9 @@
+# add column with names
+c <- mtcars
+c$names <- rownames(c)
+
+----
+
+# filter for a specific rows
+f <- c("Fiat 128", "Valiant")
+fdata <- filter(c, names %in% f)

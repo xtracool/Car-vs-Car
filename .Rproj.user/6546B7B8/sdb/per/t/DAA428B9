@@ -1,0 +1,17 @@
+{
+    "contents" : "# add column with names\nc <- mtcars\nc$names <- rownames(c)\n\n----\n\n# filter for a specific rows\nf <- c(\"Fiat 128\", \"Valiant\")\nfdata <- filter(c, names %in% f)\n",
+    "created" : 1447958796658.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3108588535",
+    "id" : "DAA428B9",
+    "lastKnownWriteTime" : 1447959837,
+    "path" : "~/Coursera/Data Science/Developing Data Products/courseProject/notes",
+    "project_path" : "notes",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "text"
+}
